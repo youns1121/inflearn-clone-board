@@ -1,0 +1,7 @@
+package com.ysmin.inflearncloneboard.repository;
+
+import com.ysmin.inflearncloneboard.entity.Lecture;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface LectureRepository extends JpaRepository<Lecture, Long> {
+}

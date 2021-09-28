@@ -55,6 +55,7 @@ public enum EntityEnums {
     public enum MemberType{
         STUDENT(1, "학생"),
         INSTRUCTOR(2, "강사"),
+        ADMIN(0, "관리자"),
         ;
         private int statusCode;
         private String statusTitle;

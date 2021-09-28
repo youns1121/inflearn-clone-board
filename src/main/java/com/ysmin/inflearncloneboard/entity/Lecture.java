@@ -1,16 +1,14 @@
 package com.ysmin.inflearncloneboard.entity;
 
+import com.ysmin.inflearncloneboard.dto.LectureDto;
 import com.ysmin.inflearncloneboard.enums.EntityEnums;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Table(name = "lecture")
@@ -37,7 +35,7 @@ public class Lecture {
     private EntityEnums.LectureType lectureType;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "instructor_seq")
+    @JoinColumn(name = "instructor_req")
     private Member member;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -46,5 +44,17 @@ public class Lecture {
 
     @OneToMany(mappedBy = "lecture")
     private List<CourseRegistration> courseRegistrationList = new ArrayList<>();
+
+    @Builder
+    public void createLecture(LectureDto lectureDto){
+        this.lectureName = lectureDto.getLectureName();
+        this.difficultyType = lectureDto.getDifficultyType();
+        this.amountType = lectureDto.getAmountType();
+        this.lectureType = lectureDto.getLectureType();
+    }
+
+
+
+
 
 }

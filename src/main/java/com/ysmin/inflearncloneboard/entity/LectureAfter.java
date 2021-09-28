@@ -11,7 +11,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor/*(access = AccessLevel.PROTECTED)*/
 @AllArgsConstructor
 @Getter
 @Table(name = "lecture_after")
@@ -36,6 +36,8 @@ public class LectureAfter {
 
     @OneToMany(mappedBy = "lectureAfter")
     private List<LectureAfterAnswer> lectureAfterAnswerList = new ArrayList<>();
+
+
 
 
 
