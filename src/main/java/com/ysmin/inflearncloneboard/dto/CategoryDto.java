@@ -20,20 +20,20 @@ public class CategoryDto { //
     @Column(name = "category_name")
     private String categoryName;
 
-    @ApiModelProperty(value = "카테고리 메모")
-    @Column(name = "category_memo")
-    private String categoryMemo;
+//    @ApiModelProperty(value = "카테고리 메모")
+//    @Column(name = "category_memo")
+//    private String categoryMemo;
 
     @ApiModelProperty(value = "카테고리 분류")
     @Column(name = "category_type")
-    private EntityEnums.CategoryType categoryType;
+    private Long categoryType;
 
     @ApiModelProperty(value = "카테고리 번호")
     @Column(name = "category_number")
-    private String categoryNumber;
+    private Long categoryNumber;
 
     @ApiModelProperty(value = "부모 카테고리")
     @Column(name = "category_parent_type")
-    private String categoryParentType;
+    private Long categoryParentType;
 
 }

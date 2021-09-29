@@ -16,7 +16,6 @@ import java.util.List;
 @Entity
 public class Category extends BaseEntity { //카테고리
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "category_id")
@@ -25,18 +24,14 @@ public class Category extends BaseEntity { //카테고리
     @Column(name = "category_name")
     private String categoryName;
 
-    @Column(name = "category_memo")
-    private String categoryMemo;
-
-    @Enumerated(EnumType.ORDINAL)
     @Column(name = "category_type")
-    private EntityEnums.CategoryType categoryType;
+    private Long categoryType;
 
     @Column(name = "category_number")
-    private String categoryNumber;
+    private Long categoryNumber;
 
     @Column(name = "category_parent_type")
-    private String categoryParentType;
+    private Long categoryParentType;
 
     @OneToMany(mappedBy = "category")
     private List<Lecture> lectureList = new ArrayList<>();
@@ -44,11 +39,9 @@ public class Category extends BaseEntity { //카테고리
     @Builder
     public void createCategory(CategoryDto categoryDto){
         this.categoryName = categoryDto.getCategoryName();
-        this.categoryMemo = categoryDto.getCategoryMemo();
         this.categoryType = categoryDto.getCategoryType();
         this.categoryNumber = categoryDto.getCategoryNumber();
         this.categoryParentType = categoryDto.getCategoryParentType();
-
     }
 
 
