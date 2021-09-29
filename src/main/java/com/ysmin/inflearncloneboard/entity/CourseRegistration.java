@@ -1,5 +1,6 @@
 package com.ysmin.inflearncloneboard.entity;
 
+import com.ysmin.inflearncloneboard.common.BaseEntity;
 import com.ysmin.inflearncloneboard.enums.EntityEnums;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -13,7 +14,7 @@ import javax.persistence.*;
 @Getter
 @Table(name = "course_regi")
 @Entity
-public class CourseRegistration {
+public class CourseRegistration extends BaseEntity { //수강신청
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
