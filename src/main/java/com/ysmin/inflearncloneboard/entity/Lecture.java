@@ -42,6 +42,18 @@ public class Lecture {
     @JoinColumn(name = "category_id")
     private Category category;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "tag_first_id")
+    private Tag tagFrist;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "tag_second_id")
+    private Tag tagSecond;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "tag_third_id")
+    private Tag tagThird;
+
     @OneToMany(mappedBy = "lecture")
     private List<CourseRegistration> courseRegistrationList = new ArrayList<>();
 
