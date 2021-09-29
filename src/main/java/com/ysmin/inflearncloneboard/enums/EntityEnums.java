@@ -42,11 +42,10 @@ public enum EntityEnums {
     @Getter
     @AllArgsConstructor
     public enum CategoryType{
-        LARGE(1, "대분류"),
-        MEDIUM(2, "중분류"),
-        SMALL(3, "소분류")
+        LARGE("대분류"),
+        MEDIUM("중분류"),
+        SMALL("소분류")
         ;
-        private int statusCode;
         private String statusTitle;
     }
 
