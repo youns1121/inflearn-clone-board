@@ -19,7 +19,7 @@ public class CourseRegistration extends BaseEntity { //수강신청
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "course_regi_id")
-    private Long CourseRegiId;
+    private Long courseRegiId;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "registration_stus")
