@@ -24,8 +24,8 @@ public class Tag extends BaseEntity {
     @Column(name = "tag_id")
     private Long tagId;
 
-    @Column(name = "tag_title")
-    private String tagTitle;
+    @Column(name = "tag_name")
+    private String tagName;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "instructor_seq")
