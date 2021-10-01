@@ -1,13 +1,11 @@
 package com.ysmin.inflearncloneboard.enums;
 
+import com.ysmin.inflearncloneboard.converter.EnumCommonType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-import java.util.Map;
-import java.util.Objects;
-import java.util.stream.Stream;
+import java.util.Arrays;
 
-import static java.util.stream.Collectors.toMap;
 
 
 public enum EntityEnums {
@@ -79,27 +77,36 @@ public enum EntityEnums {
 
     @Getter
     @AllArgsConstructor
-    public enum RatingScore{
-        ONE(1,"1점"),
-        TWO(2,"2점"),
-        THREE(3,"3점"),
-        FOUR(4,"4점"),
-        FIVE(5,"5점"),
+    public enum RatingScore implements EnumCommonType{
+        ONE("1","1점"),
+        TWO("2","2점"),
+        THREE("3","3점"),
+        FOUR("4","4점"),
+        FIVE("5","5점"),
         ;
-        private Integer statusCode;
-        private String statusTitle;
+        private String statusCode;
+        private String statusName;
 
-        private static final Map<Integer, RatingScore> codeToEnum =
+        public static RatingScore ofStatusCode(String statusCode){
+            return Arrays.stream(RatingScore.values())
+                    .filter(v -> v.getStatusCode().equals(statusCode))
+                    .findAny()
+                    .orElseThrow(() -> new IllegalArgumentException(String.format("상태코드에 statusCode=[%s]가 존재하지 않습니다.", statusCode)));
+        }
+
+
+        // 이렇게 작성하면 중복 코드가 많아지면서 지저분해진다다
+       /*private static final Map<String, RatingScore> codeToEnum =
                 Stream.of(values()).collect(toMap(RatingScore::getStatusCode, e -> e));
 
-        public static RatingScore fromCode(Integer statusCode){
+        public static RatingScore ofStatusCode(String statusCode){
 
             RatingScore ratingScore = codeToEnum.get(statusCode);
             if(Objects.isNull(ratingScore)){
                 throw new IllegalArgumentException("잘못된 RatingScore 타입입니다.");
             }
             return ratingScore;
-        }
+        }*/
 
     }
 
@@ -107,7 +114,7 @@ public enum EntityEnums {
     @AllArgsConstructor
     public enum CommunityType{
         QNA(1, "질문답변"),
-        FREE_TOPIC(2, "자유주제"),
+        TOPIC(2, "자유주제"),
         STUDY(3, "스터디"),
         ;
         private Integer statusCode;
@@ -116,12 +123,15 @@ public enum EntityEnums {
 
     @Getter
     @AllArgsConstructor
-    public enum RecruitmentStatus{
-        RECURITMENT_ING(1, "모집중"),
-        RECURITMENT_COMPLETION(2, "모집완료"),
+    public enum RecruitmentStatus implements EnumCommonType {
+        RECURITMENT_ING("1", "모집중"),
+        RECURITMENT_COMPLETION("2", "모집완료"),
         ;
-        private Integer statusCode;
-        private String statusTitle;
+        private String statusCode;
+        private String statusName;
+
+
+
     }
 
 
